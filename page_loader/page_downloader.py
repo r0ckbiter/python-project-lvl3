@@ -1,12 +1,12 @@
 import os
 import re
-import requests
+from requests import get
 from urllib import parse
 from bs4 import BeautifulSoup
 
 
 def download(link_url, current_path):
-    response = requests.get(link_url)
+    response = get(link_url)
     html_page = BeautifulSoup(response.text, 'html.parser')
     html_file_path = os.path.join(current_path, get_file_name(link_url))
     with open(html_file_path, 'w') as f:
