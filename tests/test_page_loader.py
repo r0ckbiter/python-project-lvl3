@@ -1,5 +1,4 @@
 import os
-import requests
 import tempfile
 from page_loader.page_downloader import download
 
