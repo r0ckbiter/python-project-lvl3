@@ -20,4 +20,4 @@ package-reinstall:
 	python3 -m pip install --force-reinstall dist/*.whl
 
 test-coverage:
-	poetry run pytest --cov=page_loader --cov-report xml
+	poetry run pytest --cov=page_loader tests/ --cov-report xml
