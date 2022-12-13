@@ -221,6 +221,30 @@ socks = ["PySocks (>=1.5.6,!=1.5.7)"]
 use_chardet_on_py3 = ["chardet (>=3.0.2,<6)"]
 
 [[package]]
+name = "requests-mock"
+version = "1.10.0"
+description = "Mock out responses from the requests package"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+requests = ">=2.3,<3"
+six = "*"
+
+[package.extras]
+fixture = ["fixtures"]
+test = ["fixtures", "mock", "purl", "pytest", "sphinx", "testrepository (>=0.0.18)", "testtools", "requests-futures"]
+
+[[package]]
+name = "six"
+version = "1.16.0"
+description = "Python 2 and 3 compatibility utilities"
+category = "main"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*"
+
+[[package]]
 name = "soupsieve"
 version = "2.3.2.post1"
 description = "A modern CSS selector implementation for Beautiful Soup."
@@ -252,7 +276,7 @@ socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "9d494ae200c1034ddbcc00a6be031154972a1739fc4e429e1b60549ce122c9ac"
+content-hash = "6c1aab71044277179f448b0387181814d7e28d4f95dd63f3a10d013a5992ad8c"
 
 [metadata.files]
 atomicwrites = []
@@ -275,6 +299,8 @@ pyflakes = []
 pytest = []
 pytest-cov = []
 requests = []
+requests-mock = []
+six = []
 soupsieve = []
 toml = []
 urllib3 = []
