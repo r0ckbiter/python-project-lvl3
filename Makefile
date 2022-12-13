@@ -4,12 +4,6 @@ page-loader:
 install:
 	poetry install
 
-lint:
-	poetry run flake8 page_loader
-
-test:
-	poetry run pytest
-
 build:
 	poetry build
 
@@ -19,5 +13,11 @@ package-install:
 package-reinstall:
 	python3 -m pip install --force-reinstall dist/*.whl
 
-test-coverage:
-	poetry run pytest --cov=page_loader tests/ --cov-report xml
+lint:
+	poetry run flake8 page_loader
+
+test:
+	poetry run pytest tests
+
+coverage:
+	poetry run pytest --cov=page_loader /tests --cov-report xml
