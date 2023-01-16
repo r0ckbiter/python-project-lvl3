@@ -1,27 +1,25 @@
 import os
 import pytest
 import tempfile
-import requests
 import requests_mock
-from page_loader.directory_and_names import get_file_name
 from page_loader.page_downloader import download
 
 
 @pytest.fixture
 def original_page():
-    with open('fixtures/original_page.html', 'r') as f:
+    with open('tests/fixtures/original_page.html', 'r') as f:
         return f.read()
 
 
 @pytest.fixture
 def expected_page():
-    with open('fixtures/expected_page.html', 'r') as f:
+    with open('tests/fixtures/expected_page.html', 'r') as f:
         return f.read()
 
 
 @pytest.fixture
 def downloaded_image():
-    with open('fixtures/img.png', 'rb') as f:
+    with open('tests/fixtures/img.png', 'rb') as f:
         return f.read()
 
 
