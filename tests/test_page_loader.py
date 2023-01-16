@@ -27,6 +27,8 @@ def test_download(original_page, downloaded_image, expected_page):
     with requests_mock.Mocker() as mock, tempfile.TemporaryDirectory() as temp:
         mock.get('http://test.ru', text=original_page)
         mock.get('http://test.ru/files/img.png', content=downloaded_image)
+        mock.get('http://test.ru/files/resource.html', text='data')
+        mock.get('http://test.ru/script.js')
         path_to_file = download('http://test.ru', temp)
         assert os.path.isfile(path_to_file)
         assert read(path_to_file, 'r') == expected_page
