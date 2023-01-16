@@ -1,21 +1,28 @@
 import os
-import re
 import requests
-from urllib import parse
-from bs4 import BeautifulSoup
+from page_loader.directory_and_names import get_file_name,\
+    get_directory_name, make_directory
+from page_loader.resources import replace_links, download_asset
 
 
-def download(link_url, current_path):
-    response = requests.get(link_url)
-    html_page = BeautifulSoup(response.text, 'html.parser')
-    html_file_path = os.path.join(current_path, get_file_name(link_url))
-    with open(html_file_path, 'w') as f:
-        f.write(html_page.prettify())
-    return html_file_path
+def download(url, current_path):
+    response = requests.get(url)
+    page_name = get_file_name(url)
+    page_path = os.path.join(current_path, page_name)
 
+    assets_dir_name = get_directory_name(url)
+    assets_path = os.path.join(current_path, assets_dir_name)
+    make_directory(page_path)
 
-def get_file_name(url):
-    url_name = parse.urlparse(url)
-    url_raw_name = '{0}{1}'.format(url_name.netloc, url_name.path)
-    file_name = re.sub(r'(/|[.])', '-', url_raw_name)
-    return '{0}{1}'.format(file_name, '.html')
+    page, assets_links = replace_links(url, response.text, assets_dir_name)
+    try:
+        with open(page_path, 'w', encoding='utf-8') as f:
+            f.write(page)
+    except requests.exceptions.MissingSchema:
+        pass
+
+    if assets_links:
+        for link in assets_links:
+            download_asset(link, assets_path)
+
+    return page_path
