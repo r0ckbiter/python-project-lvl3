@@ -1,12 +1,14 @@
 import os
 import re
 from urllib.parse import urlparse
+from page_loader.logger import logger
 
 
 def make_directory(path):
     path = path.replace('.html', '_files')
     if not os.path.isdir(path):
         os.mkdir(path)
+        logger.info(f'created directory for assets {path}')
     else:
         pass
 
