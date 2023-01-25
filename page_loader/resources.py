@@ -43,9 +43,7 @@ def download_asset(link, assets_path):
     logger.info(f"got {response}")
 
     file_name = get_file_name(link)
-    logger.info(f'creating filename {file_name}')
     file_path = os.path.join(assets_path, file_name)
-    logger.info(f'creating path to the page {file_path}')
 
     with open(file_path, 'wb') as file:
         file.write(response.content)

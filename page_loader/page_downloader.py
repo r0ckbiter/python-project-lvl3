@@ -1,5 +1,6 @@
 import os
 import requests
+from progress.bar import IncrementalBar
 from page_loader.directory_and_names import get_file_name,\
     get_directory_name, make_directory
 from page_loader.resources import replace_links, download_asset
@@ -40,7 +41,6 @@ def download(url, current_path):
         raise AppInternalError('Error! See log for more details.') from e
 
     page, assets_links = replace_links(url, response.text, assets_dir_name)
-
     logger.info('links have been replaced')
 
     try:
@@ -52,8 +52,10 @@ def download(url, current_path):
         raise AppInternalError('Error! See log for more details.') from e
 
     if assets_links:
-        for link in assets_links:
-            download_asset(link, assets_path)
+        with IncrementalBar('Loading', max=len(assets_links)) as bar:
+            for link in assets_links:
+                download_asset(link, assets_path)
+                bar.next()
 
-    logger.info('downloading finished successfully')
+    logger.info('Downloading finished successfully')
     return page_path
