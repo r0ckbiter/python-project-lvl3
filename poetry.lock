@@ -141,6 +141,14 @@ dev = ["pre-commit", "tox"]
 testing = ["pytest", "pytest-benchmark"]
 
 [[package]]
+name = "progress"
+version = "1.6"
+description = "Easy to use progress bars"
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "py"
 version = "1.11.0"
 description = "library with cross-python path, ini-parsing, io, code, log facilities"
@@ -275,7 +283,7 @@ socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "6c1aab71044277179f448b0387181814d7e28d4f95dd63f3a10d013a5992ad8c"
+content-hash = "c74b0e31bd8e0d636f990e2dcb8a433553cc951d88be1b61853db81f5adff119"
 
 [metadata.files]
 atomicwrites = []
@@ -292,6 +300,7 @@ iniconfig = []
 mccabe = []
 packaging = []
 pluggy = []
+progress = []
 py = []
 pycodestyle = []
 pyflakes = []
