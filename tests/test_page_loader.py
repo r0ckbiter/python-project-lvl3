@@ -37,3 +37,4 @@ def test_download(original_page, downloaded_image, expected_page):
 def read(file_path, mode):
     with open(file_path, mode) as data:
         return data.read()
+

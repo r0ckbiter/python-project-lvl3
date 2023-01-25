@@ -16,5 +16,7 @@ pip install git+https://github.com/r0ckbiter/python-project-lvl3
 ```
 page-loader %URL%
 ```
+***
+### Example
 
-
+[![asciicast](https://asciinema.org/a/A2xGaEHECqOXFkeJR01RcWlRd.svg)](https://asciinema.org/a/A2xGaEHECqOXFkeJR01RcWlRd)
